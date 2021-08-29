@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<body>
+	<h:form>
+		<h4>
+		Panier
+		</h4>
+		
+		<table>
+			
+			<tr>
+				<td>Id:</td>
+				<td><h:inputText id="id" value="#{articleBean.id}"
+						required="true">
+										
+					</h:inputText> <h:message for="id" /></td>
+			</tr>
+			<tr>
+				<td>Article_Id:</td>
+				<td><h:inputText id="articleId" value="#{articleBean.articleId}"
+						required="true">
+										
+					</h:inputText> <h:message for="articleId" /></td>
+			</tr>
+			<tr>
+				<td>Quantite:</td>
+				<td><h:inputText id="quantite" value="#{articleBean.quantite}"
+						required="true">
+						
+				
+					</h:inputText> <h:message for="quantite" /></td>
+			</tr>
+			<tr>
+				<td>User_Id:</td>
+				<td><h:inputText id="userId"
+						value="#{articleBean.userId}" required="true"></h:inputText>
+					<h:message for="userId" style="color:red" /></td>
+			</tr>
+			
+			</table>
+
+	</h:form>
+
+
+</body>
+</html>

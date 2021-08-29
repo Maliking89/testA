@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<body>
+
+	<h:form>
+		<h4>Listes Des Articles</h4>
+		<h:dataTable value="#{articleBean.getArticles()}" var="u"
+			styleClass="order table" headerClass="order table header"
+			rowClasses="order-table-odd-row, order-table-even-row">
+
+			<h:column>
+				<f:facet name="header">Nom</f:facet>
+				<h:outputText value="#{u.nom}" />
+			</h:column>
+
+			<h:column>
+				
+				<f:facet name="header">Description</f:facet>
+				
+				<h:outputText value="#{u.description}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Prix</f:facet>
+				<h:outputText value="#{u.prix}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remise</f:facet>
+				<h:outputText value="#{u.remise}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Stock</f:facet>
+				<h:outputText value="#{u.stock}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Ajouter au Pannier</f:facet>
+				<h:commandLink value="Ajouter" action="#{articleBean.ajouterPannier(u)}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Supprimer de Pannier</f:facet>
+				<h:commandButton value="supprimer"
+					action="#{articleBean.SupprimerDePannierUser(u)}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</body>
+</html>

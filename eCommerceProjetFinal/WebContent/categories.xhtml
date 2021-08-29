@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<a
+		href="http://localhost:8080/eCommerceProjetFinal/faces/accueil.xhtml">Bienvenu(e)
+		Chez MissTamourtCommerce </a>
+	<h:panelGroup>
+		<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+			<h:commandButton value="Deconnexion"
+				action="#{categoriesBean.deconnexion()}" />
+
+		</h:panelGrid>
+	</h:panelGroup>
+</h:head>
+
+<body>
+
+	<h:form>
+		<table>
+
+			<tr>
+				<td>Nom De Categorie:</td>
+				
+				
+				
+				<td><h:inputText id="nomCategorie"
+						value="#{categoriesBean.nomCategorie}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+					</h:inputText> <h:message for="nom" /></td>
+			</tr>
+
+			<tr>
+				<td>Nom de l'Article:</td>
+				<td><h:inputText id="nomArticle"
+						value="#{categoriesBean.nomArticle}" required="true"></h:inputText></td>
+			</tr>
+			
+
+		</table>
+		<h:panelGroup>
+			<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+				<h:commandButton value="Recheche Article"
+					action="#{categoriesBean.rechercheArticle()}"/>
+					
+				
+			</h:panelGrid>
+		</h:panelGroup>
+		
+		<h4>Nos Categories</h4>
+			
+		<h:dataTable value="#{categoriesBean.getCategories()}" var="u"
+			styleClass="order table" headerClass="order table header"
+			rowClasses="order-table-odd-row, order-table-even-row">
+
+			<h:column>
+				<f:facet name="header">Nom de Categorie</f:facet>
+				<h:outputText value="#{u.nom}" />
+			</h:column>
+
+			<h:column>
+
+				<f:facet name="header">Photo</f:facet>
+
+				<h:outputText value="#{u.photo}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remise</f:facet>
+				<h:outputText value="#{u.remise}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Entrer</f:facet>
+				<h:commandButton value="Rechercher "
+					action="#{categoriesBean.chercherArticle(u)}" />
+			</h:column>
+		</h:dataTable>
+		
+
+	</h:form>
+
+</body>
+</html>

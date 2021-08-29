@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<body>
+	<h:form>
+		<h4>Créer Un Compte Utilisateur</h4>
+
+		<table>
+			<tr>
+				<td>Sexe:</td>
+				<td><h:selectOneRadio id="genre" value="#{userBean.genre}"
+						required="true">
+						<f:selectItems value="#{userBean.genres}" />
+					</h:selectOneRadio> <h:message for="genre" style="color:red" /></td>
+			</tr>
+			<tr>
+				<td>Nom:</td>
+				<td><h:inputText id="nom" value="#{userBean.nom}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="nom" /></td>
+			</tr>
+			<tr>
+				<td>Prénom:</td>
+				<td><h:inputText id="prenom" value="#{userBean.prenom}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="prenom" /></td>
+			</tr>
+
+			<tr>
+				<td>Telephone:</td>
+				<td><h:inputText id="telephone" value="#{userBean.telephone}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="telephone" /></td>
+			</tr>
+
+			<tr>
+				<td>Date de Naissance:</td>
+				<td><h:inputText id="dateNaissance"
+						value="#{userBean.dateNaissance}" required="true"></h:inputText>
+					(jj/mm/aaaa)<h:message for="dateNaissance" style="color:red" /></td>
+			</tr>
+
+			<tr>
+				<td>Email:</td>
+				<td><h:inputText id="email" value="#{userBean.email}"
+						required="true">
+
+					</h:inputText> <h:message for="email" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><h:inputSecret id="password" value="#{userBean.password}"
+						required="true">
+
+					</h:inputSecret> <h:message for="password" /></td>
+			</tr>
+
+			<tr>
+				<td>Numero De Rue:</td>
+				<td><h:inputText id="numero" value="#{userBean.numeroDeRue}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+					</h:inputText> <h:message for="numeroDeRue" /></td>
+			</tr>
+			<tr>
+				<td>Rue:</td>
+				<td><h:inputText id="rue" value="#{userBean.rue}"
+						required="true">
+						<f:validateLength minimum="2" maximum="255"></f:validateLength>
+					</h:inputText> <h:message for="rue" /></td>
+			</tr>
+			<tr>
+				<td>Code Postal:</td>
+				<td><h:inputText id="codePostal" value="#{userBean.codePostal}"
+						required="true">
+						<f:validateLength minimum="2" maximum="255"></f:validateLength>
+
+					</h:inputText> <h:message for="codePostal" /></td>
+			</tr>
+			<tr>
+				<td>Ville:</td>
+				<td><h:inputText id="ville" value="#{userBean.ville}"
+						required="true">
+						<f:validateLength minimum="2" maximum="255"></f:validateLength>
+
+					</h:inputText> <h:message for="ville" /></td>
+			</tr>
+
+
+			<tr>
+
+				<td>Numero De Carte :</td>
+				<td><h:inputText id="numeroCarte"
+						value="#{userBean.numeroCarte}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+
+					</h:inputText> <h:message for="numeroCarte" /></td>
+			</tr>
+			<tr>
+				<td>Nom de Prorietaire :</td>
+				<td><h:inputText id="nomProprietaire"
+						value="#{userBean.nomProprietaire}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+
+					</h:inputText> <h:message for="nomProprietaire" /></td>
+			</tr>
+			<tr>
+				<td>Prenom de Prorietaire :</td>
+				<td><h:inputText id="prenomProprietaire"
+						value="#{userBean.prenomProprietaire}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+
+					</h:inputText> <h:message for="prenomProprietaire" /></td>
+			</tr>
+			<tr>
+				<td>Date Fin Validite :</td>
+				<td><h:inputText id="dateFinValidite"
+						value="#{userBean.dateFinValidite}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+
+					</h:inputText> <h:message for="dateFinValidite" /></td>
+			</tr>
+			<tr>
+				<td>Cryptogramme :</td>
+				<td><h:inputText id="cryptogramme"
+						value="#{userBean.cryptogramme}" required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+
+					</h:inputText> <h:message for="cryptogramme" /></td>
+			</tr>
+		</table>
+
+		<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+			<h:commandButton value="Creer un Compte"
+				action="#{userBean.creerUser()}"
+				disabled="#{userBean.boutonAjouterActif}" />
+		</h:panelGrid>
+
+
+	</h:form>
+</body>
+</html>

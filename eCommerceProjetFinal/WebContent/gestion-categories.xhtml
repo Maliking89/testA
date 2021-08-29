@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+	<a
+		href="http://localhost:8080/eCommerceProjetFinal/faces/gestion_articles_categories.xhtml">
+		retoure vers la page précédent </a>
+</h:head>
+
+<body>
+	<h:form>
+		<h4>Gestion Des Categories</h4>
+		<table>
+			<tr>
+				<td>Id:</td>
+
+
+				<td><h:inputText id="id" value="#{magasinierCategorieBean.id}"
+						required="true" style="color:gray">
+
+					</h:inputText> <h:message for="id" /></td>
+			</tr>
+
+			<tr>
+				<td>Nom:</td>
+				<td><h:inputText id="nom"
+						value="#{magasinierCategorieBean.nom}">
+
+
+					</h:inputText> <h:message for="nom" /></td>
+			</tr>
+			<tr>
+				<td>Remise:</td>
+				<td><h:inputText id="remise"
+						value="#{magasinierCategorieBean.remise}">
+
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="remise" /></td>
+			</tr>
+
+			<tr>
+				<td>Photo:</td>
+				<td><h:inputText id="photo"
+						value="#{magasinierCategorieBean.photo}">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputText> <h:message for="photo" /></td>
+			</tr>
+
+		</table>
+
+		<h:panelGroup>
+			<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+				<h:commandButton value="Ajouter Categorie"
+					action="#{magasinierCategorieBean.creerCategorie()}" />
+				<h:commandButton value="Mettre à jour Categorie"
+					action="#{magasinierCategorieBean.updateCategorie()}" />
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:form>
+	<h:form>
+		<h4>Nos Categories</h4>
+
+		<h:dataTable value="#{magasinierCategorieBean.getCategories()}"
+			var="c" styleClass="order table" headerClass="order table header"
+			rowClasses="order-table-odd-row, order-table-even-row">
+			<h:column>
+				<f:facet name="header">Id </f:facet>
+				<h:outputText value="#{c.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nom de Categorie</f:facet>
+				<h:outputText value="#{c.nom}" />
+			</h:column>
+
+			<h:column>
+
+				<f:facet name="header">Photo</f:facet>
+
+				<h:outputText value="#{c.photo}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remise</f:facet>
+				<h:outputText value="#{c.remise}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Supprimer"
+					action="#{magasinierCategorieBean.supprimerCategorie(c)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+
+				<h:commandLink value="Modifier "
+					action="#{magasinierCategorieBean.modifierCategorie(c)}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</body>
+</html>

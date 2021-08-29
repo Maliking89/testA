@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+
+<body>
+	<h:form>
+		<h4>
+			Formulaire JSF d'inscription à l'<a
+				href="https://www.doranco.fr/candidature/parcours/41?">Ecole
+				DORANCO</a>
+		</h4>
+		
+		<table>
+			<tr>
+				<td>Sexe:</td>
+				<td><h:selectOneRadio id="genre" value="#{userBean.genre}"
+						required="true">
+						<f:selectItems value="#{userBean.genres}" />
+					</h:selectOneRadio> <h:message for="genre" style="color:red" /></td>
+			</tr>
+			<tr>
+				<td>Nom:</td>
+				<td><h:inputText id="nom" value="#{userBean.nom}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="nom" /></td>
+			</tr>
+			<tr>
+				<td>Prénom:</td>
+				<td><h:inputText id="prenom" value="#{userBean.prenom}"
+						required="true">
+						<f:validateLength minimum="2" maximum="25"></f:validateLength>
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="prenom" /></td>
+			</tr>
+			<tr>
+				<td>Date de Naissance:</td>
+				<td><h:inputText id="dateNaissance"
+						value="#{userBean.dateNaissance}" required="true"></h:inputText>
+					(jj/mm/aaaa)<h:message for="dateNaissance" style="color:red" /></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><h:inputText id="email" value="#{userBean.email}"
+						required="true">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputText> <h:message for="email" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><h:inputSecret id="password" value="#{userBean.password}"
+						required="true">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputSecret> <h:message for="password" /></td>
+			</tr>
+			</table>
+
+		<h:panelGroup>
+			<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+				<h:commandButton value="Ajouter l'user"
+					action="#{userBean.creerUser()}"
+					disabled="#{userBean.boutonAjouterActif}" />
+				<h:commandButton value="Mettre à jour"
+					action="#{userBean.updateUser()}"
+					disabled="#{userBean.boutonMajActif}" />
+			</h:panelGrid>
+		</h:panelGroup>
+
+	</h:form>
+
+	<h:form>
+		<h4>Listes des users</h4>
+		<h:dataTable value="#{userBean.getUsers()}" var="u"
+			styleClass="order table" headerClass="order table header"
+			rowClasses="order-table-odd-row, order-table-even-row">
+
+			<h:column>
+				<f:facet name="header">Genre</f:facet>
+				<h:outputText value="#{u.genre}" />
+			</h:column>
+
+			<h:column>
+				<!--column header -->
+				<f:facet name="header">Prénom</f:facet>
+				<!-- row record -->
+				<h:outputText value="#{u.prenom}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Nom</f:facet>
+				<h:outputText value="#{u.nom}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{u.email}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Date de Naisssance</f:facet>
+				<h:outputText value="#{u.dateNaissance}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Supprimer" action="#{userBean.supprimerUser(u)}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandButton value="modifier"
+					action="#{userBean.modifierUser(u)}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</body>
+</html>

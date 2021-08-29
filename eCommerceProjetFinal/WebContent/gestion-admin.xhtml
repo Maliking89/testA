@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+</h:head>
+<h:form>
+<table>
+	
+		<h4>Gestion Des Administrateurs</h4>
+
+
+		<tr>
+			<td>Profil:</td>
+			<td><h:selectOneRadio id="profil" value="#{adminBean.profil}"
+					required="true">
+					<f:selectItems value="#{adminBean.profils}" />
+				</h:selectOneRadio> <h:message for="profil" style="color:red" /></td>
+		</tr>
+
+		<tr>
+			<td>Nom:</td>
+			<td><h:inputText id="nom" value="#{adminBean.nom}"
+					required="true">
+					<f:validateLength minimum="2" maximum="25"></f:validateLength>
+					<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+				</h:inputText> <h:message for="nom" /></td>
+		</tr>
+		<tr>
+			<td>Prénom:</td>
+			<td><h:inputText id="prenom" value="#{adminBean.prenom}"
+					required="true">
+					<f:validateLength minimum="2" maximum="25"></f:validateLength>
+					<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+				</h:inputText> <h:message for="prenom" /></td>
+		</tr>
+
+		<tr>
+			<td>Telephone:</td>
+			<td><h:inputText id="telephone" value="#{adminBean.telephone}"
+					required="true">
+					<f:validateLength minimum="2" maximum="25"></f:validateLength>
+					<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+				</h:inputText> <h:message for="telephone" /></td>
+		</tr>
+
+		<tr>
+			<td>Date de Naissance:</td>
+			<td><h:inputText id="dateNaissance"
+					value="#{adminBean.dateNaissance}" required="true"></h:inputText>
+				(jj/mm/aaaa)<h:message for="dateNaissance" style="color:red" /></td>
+		</tr>
+
+		<tr>
+			<td>Email:</td>
+			<td><h:inputText id="email" value="#{adminBean.email}"
+					required="true">
+
+				</h:inputText> <h:message for="email" /></td>
+		</tr>
+		<tr>
+			<td>Password:</td>
+			<td><h:inputSecret id="password" value="#{adminBean.password}"
+					required="true">
+
+				</h:inputSecret> <h:message for="password" /></td>
+		</tr>
+
+		<tr>
+			<td>Numero De Rue:</td>
+			<td><h:inputText id="numero" value="#{adminBean.numeroDeRue}"
+					required="true">
+					<f:validateLength minimum="2" maximum="25"></f:validateLength>
+				</h:inputText> <h:message for="numeroDeRue" /></td>
+		</tr>
+		<tr>
+			<td>Rue:</td>
+			<td><h:inputText id="rue" value="#{adminBean.rue}"
+					required="true">
+					<f:validateLength minimum="2" maximum="255"></f:validateLength>
+				</h:inputText> <h:message for="rue" /></td>
+		</tr>
+		<tr>
+			<td>Code Postal:</td>
+			<td><h:inputText id="codePostal" value="#{adminBean.codePostal}"
+					required="true">
+					<f:validateLength minimum="2" maximum="255"></f:validateLength>
+
+				</h:inputText> <h:message for="codePostal" /></td>
+		</tr>
+		<tr>
+			<td>Ville:</td>
+			<td><h:inputText id="ville" value="#{adminBean.ville}"
+					required="true">
+					<f:validateLength minimum="2" maximum="255"></f:validateLength>
+
+				</h:inputText> <h:message for="ville" /></td>
+		</tr>
+		</table>
+	
+	<h:panelGroup>
+		<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+			<h:commandButton value="Ajouter "
+				action="#{adminBean.creerUser()}" />
+			<h:commandButton value="Mettre à jour "
+				action="#{adminBean.updateUser()}" />
+		</h:panelGrid>
+	</h:panelGroup>
+</h:form>
+<h:form>
+<h4>Gestion Des Magasiniers Et Administateurs</h4>
+
+<h:dataTable value="#{adminBean.getUsers()}" var="u"
+	styleClass="order table" headerClass="order table header"
+	rowClasses="order-table-odd-row, order-table-even-row">
+
+	<h:column>
+		<f:facet name="header">Id </f:facet>
+		<h:outputText value="#{u.id}" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">Nom </f:facet>
+		<h:outputText value="#{u.nom}" />
+	</h:column>
+	<h:column>
+
+		<f:facet name="header">Prenom</f:facet>
+
+		<h:outputText value="#{u.prenom}" />
+	</h:column>
+	<h:column>
+
+		<f:facet name="header">Email</f:facet>
+
+		<h:outputText value="#{u.email}" />
+	</h:column>
+
+
+	<h:column>
+		<f:facet name="header">Telephone</f:facet>
+		<h:outputText value="#{u.telephone}" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">Date De Naissance</f:facet>
+		<h:outputText value="#{u.dateNaissance}" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">Profil</f:facet>
+		<h:outputText value="#{u.profil}" />
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">Action</f:facet>
+		<h:commandLink value="Supprimer"
+			action="#{adminBean.supprimerUser(u)}" />
+	</h:column>
+	<h:column>
+		<f:facet name="header">Action</f:facet>
+		<h:commandLink value="Modifier "
+			action="#{adminBean.modifierUser(u)}" />
+	</h:column>
+</h:dataTable>
+</h:form>
+</html>

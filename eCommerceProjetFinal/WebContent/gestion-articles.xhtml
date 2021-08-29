@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!--intégration du fichier css dans la page -->
+	<h:outputStylesheet library="css" name="table-style.css" />
+	<h:outputStylesheet library="css" name="common-style.css" />
+	<a
+		href="http://localhost:8080/eCommerceProjetFinal/faces/gestion_articles_categories.xhtml">
+		retoure vers la page précédent </a>
+</h:head>
+
+<body>
+	<h:form>
+		<h4>Gestion Des Articles</h4>
+		<table>
+			<tr>
+				<td>Id:</td>
+
+				<td><h:inputText id="id" value="#{magasinierArticleBean.id}"
+						required="true" style="color:gray">
+
+					</h:inputText> <h:message for="id" /></td>
+			</tr>
+
+			<tr>
+				<td>Nom:</td>
+				<td><h:inputText id="nom" value="#{magasinierArticleBean.nom}">
+
+					</h:inputText> <h:message for="nom" /></td>
+			</tr>
+			<tr>
+				<td>Description:</td>
+				<td><h:inputText id="description"
+						value="#{magasinierArticleBean.description}">
+
+						<!-- 					<f:validateRegex pattern="^[A-Z][A-Za-z\é\è\ê\-]+$"></f:validateRegex> -->
+					</h:inputText> <h:message for="remise" /></td>
+			</tr>
+
+			<tr>
+				<td>Prix:</td>
+				<td><h:inputText id="prix"
+						value="#{magasinierArticleBean.prix}">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputText> <h:message for="prix" /></td>
+			</tr>
+			<tr>
+				<td>Remise:</td>
+				<td><h:inputText id="remise"
+						value="#{magasinierArticleBean.remise}">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputText> <h:message for="remise" /></td>
+			</tr>
+			<tr>
+				<td>Stock:</td>
+				<td><h:inputText id="stock"
+						value="#{magasinierArticleBean.stock}">
+						<!-- 					<f:validateRegex pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"> -->
+						<!-- 					</f:validateRegex> -->
+					</h:inputText> <h:message for="stock" /></td>
+			</tr>
+						<tr>
+							<td>Id_Categorie:</td>
+							<td><h:inputText id="categorie"
+									value="#{magasinierArticleBean.categorie}">
+														
+								</h:inputText> <h:message for="categorie" /></td>
+						</tr>
+		
+				<tr>
+			<td>Vendable:</td>
+			<td><h:selectOneRadio id="isVendable" value="#{magasinierArticleBean.isVendable}"
+					required="true">
+					<f:selectItems value="#{magasinierArticleBean.disponibilitesArticles}" />
+				</h:selectOneRadio> <h:message for="isVendable" style="color:red" /></td>
+		</tr>
+
+		</table>
+
+		<h:panelGroup>
+			<h:panelGrid columns="2" cellpadding="0" cellspacing="4">
+				<h:commandButton value="Ajouter Article"
+					action="#{magasinierArticleBean.creerArticle()}" />
+				<h:commandButton value="Mettre à jour l'Article"
+					action="#{magasinierArticleBean.updateArticle()}" />
+			</h:panelGrid>
+		</h:panelGroup>
+	</h:form>
+	<h:form>
+		<h4>Nos Articles</h4>
+
+		<h:dataTable value="#{magasinierArticleBean.getArticles()}" var="a"
+			styleClass="order table" headerClass="order table header"
+			rowClasses="order-table-odd-row, order-table-even-row">
+			<h:column>
+				<f:facet name="header">Id </f:facet>
+				<h:outputText value="#{a.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nom d'Article</f:facet>
+				<h:outputText value="#{a.nom}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Description</f:facet>
+				<h:outputText value="#{a.description}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Prix</f:facet>
+				<h:outputText value="#{a.prix}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Remise Article</f:facet>
+				<h:outputText value="#{a.remise}" />
+			</h:column>
+
+
+			<h:column>
+				<f:facet name="header">Stock</f:facet>
+				<h:outputText value="#{a.stock}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Vendable</f:facet>
+				<h:outputText value="#{a.isVendable}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Categorie</f:facet>
+				<h:outputText value="#{a.categorie.nom}" />
+			</h:column>
+<!-- 			<h:column> -->
+<!-- 				<f:facet name="header">Remise Categorie</f:facet> -->
+<!-- 				<h:outputText value="#{a.categorie.remise}" /> -->
+<!-- 			</h:column> -->
+
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Supprimer "
+					action="#{magasinierArticleBean.supprimerArticle(a)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+
+				<h:commandLink value="Modifier  "
+					action="#{magasinierArticleBean.modifierArticle(a)}" />
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+
+</body>
+</html>
